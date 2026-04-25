@@ -17,7 +17,9 @@ from pathlib import Path
 from langchain.chains import ConversationalRetrievalChain
 from langchain_groq import ChatGroq
 
+# Allow imports from project root
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from config import GROQ_API_KEY, LLM_MODEL
 from prompts import get_prompt_template
 from rag.memory import build_memory
