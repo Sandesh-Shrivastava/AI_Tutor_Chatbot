@@ -29,50 +29,22 @@ ai-tutor-chatbot/
 └── .env.example
 ```
 
----
+## 🚀 Deployment Status: Cloud-Native
+This project is fully configured for a **Production Environment**.
 
-## ⚙️ Setup
+- **Vector Database**: Hosted on **Qdrant Cloud** (AWS London).
+- **Relational Database**: Hosted on **Aiven for MySQL**.
+- **LLM Inferences**: Powered by **LLaMA 3.3** via Groq.
+- **Frontend**: Ready for **Streamlit Cloud**.
 
-### 1. Clone & install dependencies
-```bash
-git clone <repo-url>
-cd ai-tutor-chatbot
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 2. Configure environment
-```bash
-cp .env.example .env
-# Fill in GROQ_API_KEY, QDRANT_URL, MYSQL_URL
-```
-
-Get a **free** Groq API key at: https://console.groq.com
-
-### 3. Start Qdrant (Docker)
-```bash
-docker run -d -p 6333:6333 qdrant/qdrant
-# Or use the free cloud tier: https://cloud.qdrant.io
-```
-
-### 4. Set up MySQL
-```bash
-mysql -u root -p < database/schema.sql
-```
-
-### 5. Ingest documents
-```bash
-# Single file
-python ingestion/ingest.py --subject Physics --chapter Kinematics --file ingestion/docs/ncert_11.pdf
-
-# Bulk (folder structure: docs/<Subject>/<Chapter>/<file>.pdf)
-python ingestion/ingest.py --bulk-dir ingestion/docs/
-```
-
-### 6. Run the app
-```bash
-streamlit run app/main.py
-```
+### 🛠️ Production Setup
+1.  **Environment Secrets**: Ensure `.env` (or Streamlit Secrets) contains:
+    *   `GROQ_API_KEY`
+    *   `QDRANT_URL` (Cloud Endpoint)
+    *   `QDRANT_API_KEY`
+    *   `MYSQL_URL` (Aiven Connection String)
+2.  **Database Migration**: Run `database/schema.sql` on the cloud DB.
+3.  **Data Ingestion**: Run `python ingestion/ingest.py --bulk-dir ingestion/docs/` to sync the vector store.
 
 ---
 
