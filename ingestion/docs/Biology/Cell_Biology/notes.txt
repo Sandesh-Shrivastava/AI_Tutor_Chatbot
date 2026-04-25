@@ -1,0 +1,18 @@
+# Biology: Cell Structure and Function
+
+## The Cell
+The cell is the basic structural and functional unit of life. All living organisms are composed of cells.
+
+## Parts of a Cell
+1. **Cell Membrane**: The outer boundary of the cell that controls the movement of substances in and out.
+2. **Nucleus**: The control center of the cell containing genetic material (DNA).
+3. **Cytoplasm**: The jelly-like substance where most cellular activities occur.
+4. **Mitochondria**: Known as the powerhouse of the cell, responsible for energy production (ATP).
+5. **Ribosomes**: Sites of protein synthesis.
+6. **Endoplasmic Reticulum (ER)**: Involved in the transport of proteins and lipids.
+7. **Golgi Apparatus**: Modifies, sorts, and packages proteins for secretion.
+
+## Difference between Plant and Animal Cells
+- **Cell Wall**: Present in plant cells, absent in animal cells.
+- **Chloroplasts**: Present in plant cells for photosynthesis, absent in animal cells.
+- **Vacuoles**: Large central vacuole in plant cells, small or no vacuoles in animal cells.

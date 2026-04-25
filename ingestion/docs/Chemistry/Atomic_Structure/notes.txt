@@ -1,0 +1,19 @@
+# Chemistry: Atomic Structure
+
+## Atoms
+Atoms are the smallest particles of an element that retain its chemical properties.
+
+## Subatomic Particles
+1. **Protons**: Positively charged particles found in the nucleus. The number of protons defines the atomic number.
+2. **Neutrons**: Neutral particles found in the nucleus. Protons + Neutrons = Atomic Mass.
+3. **Electrons**: Negatively charged particles that orbit the nucleus in specific energy levels or shells.
+
+## Atomic Models
+- **Dalton's Model**: Atoms are indivisible spheres.
+- **Thomson's Plum Pudding Model**: Atoms consist of a positive sphere with embedded negative electrons.
+- **Rutherford's Model**: Most of the atom is empty space with a dense positive nucleus.
+- **Bohr's Model**: Electrons move in fixed circular orbits around the nucleus.
+
+## Isotopes
+Isotopes are atoms of the same element (same number of protons) but with different numbers of neutrons (different mass numbers).
+Example: Carbon-12 and Carbon-14.

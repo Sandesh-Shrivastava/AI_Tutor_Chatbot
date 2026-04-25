@@ -1,0 +1,21 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Environment Variables (CRITICAL: Do not push secrets)
+.env
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Data/Logs (if any)
+*.log
+database/*.sqlite
+
+# Local IDE
+.vscode/
+.idea/

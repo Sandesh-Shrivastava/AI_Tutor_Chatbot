@@ -1,0 +1,27 @@
+groq
+langchain
+langchain-groq
+langchain-community
+langchain-qdrant
+
+# Vector DB
+qdrant-client
+
+# Embeddings
+sentence-transformers
+
+# PDF Parsing
+PyPDF2
+
+# Database
+sqlalchemy
+pymysql
+cryptography
+
+# Frontend
+streamlit
+pandas
+matplotlib
+
+# Utils
+python-dotenv

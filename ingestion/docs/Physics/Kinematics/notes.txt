@@ -1,0 +1,17 @@
+Kinematics is the subfield of classical mechanics that describes the motion of points, bodies (objects), and systems of bodies (groups of objects) without considering the forces that cause them to move.
+
+Displacement is the change in position of an object. It is a vector quantity and has a direction and magnitude.
+Velocity is the rate of change of displacement. Average velocity is total displacement divided by total time.
+Acceleration is the rate of change of velocity. If velocity is changing, the object is accelerating.
+
+The equations of motion for constant acceleration are:
+1. v = u + at
+2. s = ut + 0.5 * a * t^2
+3. v^2 = u^2 + 2as
+
+Where:
+u = initial velocity
+v = final velocity
+a = acceleration
+t = time
+s = displacement
