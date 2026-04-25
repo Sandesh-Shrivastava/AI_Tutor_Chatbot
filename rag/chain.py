@@ -10,15 +10,16 @@ Returns a callable chain that accepts {"question": str} and returns {"answer": s
 """
 
 from __future__ import annotations
-
 import sys
-from pathlib import Path
+import os
+
+# Robust path injection for Streamlit Cloud
+root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if root not in sys.path:
+    sys.path.insert(0, root)
 
 from langchain.chains import ConversationalRetrievalChain
 from langchain_groq import ChatGroq
-
-# Allow imports from project root
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from config import GROQ_API_KEY, LLM_MODEL
 from prompts import get_prompt_template

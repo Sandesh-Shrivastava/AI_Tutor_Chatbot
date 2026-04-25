@@ -1,7 +1,11 @@
 from __future__ import annotations
 import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import os
+
+# Robust path injection for Streamlit Cloud
+root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if root not in sys.path:
+    sys.path.insert(0, root)
 
 import pandas as pd
 import matplotlib.pyplot as plt
