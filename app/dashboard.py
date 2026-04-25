@@ -1,19 +1,12 @@
-"""
-dashboard.py — Progress dashboard tab for the AI Tutor Streamlit app.
-Displays weak topics, session history, and usage stats pulled from MySQL.
-"""
-
-from __future__ import annotations
-
 import sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from __future__ import annotations
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import streamlit as st
-
-# Allow imports from project root
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from database.session_logger import get_topic_performance, get_session_history
 

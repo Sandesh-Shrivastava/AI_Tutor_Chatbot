@@ -1,26 +1,9 @@
-"""
-main.py — Streamlit Chat UI for the AI Tutor Chatbot.
-
-Run with:
-    streamlit run app/main.py
-
-Features:
-- Subject selector + level toggle + Socratic mode toggle
-- Multi-turn chat with LLaMA 3.3 via RAG (LangChain + Qdrant)
-- All conversations logged to MySQL
-- Sidebar: recent sessions, quick-switch
-- Progress tab: weak topics + session stats dashboard
-"""
-
-from __future__ import annotations
-
 import sys
 from pathlib import Path
-
-import streamlit as st
-
-# Allow running from project root
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from __future__ import annotations
+import streamlit as st
 
 from config import APP_TITLE, STUDENT_LEVELS, SUPPORTED_SUBJECTS
 from database.session_logger import (
