@@ -25,7 +25,8 @@ export function Chat() {
     if (!sessionId && user) {
       const initSession = async () => {
         try {
-          const res = await fetch("http://localhost:8000/sessions/start", {
+          const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+          const res = await fetch(`${baseUrl}/sessions/start`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -55,7 +56,8 @@ export function Chat() {
     setIsTyping(true);
 
     try {
-      const res = await fetch("http://localhost:8000/chat/ask", {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const res = await fetch(`${baseUrl}/chat/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
