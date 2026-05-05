@@ -1,93 +1,93 @@
-# 🎓 AI Tutor Chatbot
+# 🎓 AI Tutor Chatbot — Production Grade RAG Portal
 
-> Subject-aware RAG chatbot for personalized tutoring — Python · LangChain · LLaMA 3.3 · Qdrant · MySQL · Streamlit
-
----
-
-## ✨ Features
-
-- **Multi-level explanations** — Beginner / Intermediate / Advanced prompt modes
-- **Socratic mode** — Bot asks guiding questions instead of giving direct answers
-- **RAG pipeline** — Retrieves relevant textbook content from Qdrant before answering
-- **Multi-turn memory** — Conversations maintain context across turns
-- **Session & progress tracking** — Every query logged to MySQL; weak topics surfaced in dashboard
-- **Subject selector** — Supports Physics, Maths, Chemistry, Python Programming, and more
+An ultra-modern, production-ready AI tutoring platform built with **React (Next.js)** and **FastAPI**. It uses Retrieval-Augmented Generation (RAG) to provide strictly isolated, subject-specific learning support powered by **LLaMA 3.3 (70B)** via Groq.
 
 ---
 
-## 🗂️ Project Structure
+## 🎨 Design Aesthetic: "Industrial Architect"
+The portal features a premium, high-performance UI designed for professional focus:
+- **Palette**: Absolute Carbon Black, Vibrant Vermilion (Orange), and Concrete Grey.
+- **Vibe**: High-precision brutalism with a technical terminal-style layout.
+- **Glassmorphism**: Sharp, non-blurred glass panels with 1px industrial borders.
 
-```
-ai-tutor-chatbot/
-├── ingestion/          # Phase 1: PDF → Qdrant pipeline
-├── database/           # Phase 2: MySQL schema + ORM + loggers
-├── rag/                # Phase 3: LangChain RAG chain
-├── prompts/            # Phase 4: Prompt templates (4 modes)
-├── app/                # Phase 5: Streamlit UI + dashboard
-├── config.py           # Centralized config
-├── requirements.txt
-└── .env.example
-```
+---
 
-## 🚀 Deployment Status: Cloud-Native
-This project is fully configured for a **Production Environment**.
-
-- **Vector Database**: Hosted on **Qdrant Cloud** (AWS London).
-- **Relational Database**: Hosted on **Aiven for MySQL**.
-- **LLM Inferences**: Powered by **LLaMA 3.3** via Groq.
-- **Frontend**: Ready for **Streamlit Cloud**.
-
-### 🛠️ Production Setup
-1.  **Environment Secrets**: Ensure `.env` (or Streamlit Secrets) contains:
-    *   `GROQ_API_KEY`
-    *   `QDRANT_URL` (Cloud Endpoint)
-    *   `QDRANT_API_KEY`
-    *   `MYSQL_URL` (Aiven Connection String)
-2.  **Database Migration**: Run `database/schema.sql` on the cloud DB.
-3.  **Data Ingestion**: Run `python ingestion/ingest.py --bulk-dir ingestion/docs/` to sync the vector store.
+## 🚀 Key Features
+- **Strict Subject Isolation**: The AI is hard-coded to stay within the bounds of the active subject (e.g., Physics, AI, Social Science).
+- **Ultra-Concise Normal Mode**: Delivers direct, one-line answers for rapid learning.
+- **Socratic Mentorship Mode**: Guides students via thought-provoking questions rather than direct answers.
+- **Session Persistence**: Stays logged in and maintains state even after a browser refresh.
+- **Hybrid Search**: Leverages Qdrant Cloud for high-speed semantic retrieval from uploaded textbooks.
 
 ---
 
 ## 🏗️ Tech Stack
-
-| Component | Technology |
-|---|---|
-| LLM | LLaMA 3.3 (70B) via Groq API |
-| Orchestration | LangChain |
-| Vector Store | Qdrant |
-| Embeddings | HuggingFace `all-MiniLM-L6-v2` |
-| Database | MySQL + SQLAlchemy |
-| Frontend | Streamlit |
-| PDF Parsing | PyPDF2 |
-| Analytics | Pandas + Matplotlib |
+- **Frontend**: Next.js 14+, Tailwind CSS, Framer Motion, Zustand.
+- **Backend**: FastAPI (Python), LangChain, Groq LPU.
+- **Vector Store**: Qdrant Cloud (Semantic Search).
+- **Relational DB**: MySQL (Session logging & Analytics).
+- **Embeddings**: HuggingFace `all-MiniLM-L6-v2`.
 
 ---
 
-## 📁 Document Folder Structure (for bulk ingestion)
+## 📂 Curriculum Subjects
+1.  **Physics**
+2.  **Chemistry**
+3.  **Biology**
+4.  **Mathematics**
+5.  **Computer Science**
+6.  **Artificial Intelligence (AI)**
+7.  **Social Science** (History, Geography, Political Science, Economics)
 
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Prerequisites
+- Python 3.10+
+- Node.js 18+
+- MySQL Server
+
+### 2. Environment Configuration
+Create a `.env` file in the root directory:
+```bash
+GROQ_API_KEY=your_key_here
+QDRANT_URL=your_qdrant_cloud_url
+QDRANT_API_KEY=your_qdrant_key
+MYSQL_URL=mysql+pymysql://user:pass@host/db
 ```
-ingestion/docs/
-├── Physics/
-│   ├── Kinematics/
-│   │   └── ncert_11_ch3.pdf
-│   └── Laws_of_Motion/
-│       └── ncert_11_ch5.pdf
-├── Mathematics/
-│   └── Calculus/
-│       └── notes.pdf
-└── Python_Programming/
-    └── OOP/
-        └── oop_notes.txt
+
+### 3. Backend Setup
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Start the API (with auto-reload)
+python3 api/main.py
+```
+
+### 4. Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+The UI will be available at [**http://localhost:3000**](http://localhost:3000).
+
+---
+
+## 📁 Repository Structure
+```
+├── api/                # FastAPI Backend Server
+├── frontend/           # Next.js React Application
+├── ingestion/          # PDF Parsing & Vector Ingestion
+├── rag/                # LangChain & Qdrant Logic
+├── prompts/            # Subject-Isolated Prompt Templates
+├── database/           # MySQL Session Logger
+└── config.py           # Centralized Configuration
 ```
 
 ---
 
-## 🔑 Environment Variables
-
-| Variable | Description |
-|---|---|
-| `GROQ_API_KEY` | Groq API key for LLaMA 3.3 inference |
-| `QDRANT_URL` | Qdrant server URL (default: `http://localhost:6333`) |
-| `QDRANT_API_KEY` | Qdrant API key (leave blank for local) |
-| `QDRANT_COLLECTION` | Collection name (default: `ai_tutor_docs`) |
-| `MYSQL_URL` | SQLAlchemy MySQL connection string |
+## 🛡️ License
+Copyright © 2026 Sandesh Shrivastava. All rights reserved.
