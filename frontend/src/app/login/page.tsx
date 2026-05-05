@@ -59,7 +59,7 @@ export default function LoginPage() {
           <div className="flex items-center gap-4 mb-4">
             <Terminal className="text-[#ff4d00] w-8 h-8" />
             <h1 className="text-4xl font-black text-white uppercase tracking-tighter">
-              AI_TUTOR_V1
+              AI_TUTOR
             </h1>
           </div>
           <p className="tech-label">Universal_Learning_Interface</p>
