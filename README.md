@@ -76,5 +76,22 @@ npm run dev
 
 ---
 
+## 🔮 Future Enhancements
+The AI Tutor is an evolving platform. Upcoming features include:
+
+### 🚀 1. Production Deployment
+- **Cloud Infrastructure**: Migration to a fully containerized architecture (Docker/Kubernetes).
+- **Edge Deployment**: Deploying the frontend to Vercel Edge for sub-100ms global response times.
+- **Horizontal Scaling**: Implementing a load balancer to handle thousands of concurrent students.
+
+### 🧠 2. Intelligent Features
+- **Adaptive Learning Analytics**: A personalized dashboard that tracks student "Mastery Levels" per topic using Bayesian Knowledge Tracing.
+- **Multimodal Tutoring**: Voice-to-Voice interaction and AI-generated video explanations.
+- **Visual Synthesis**: Real-time generation of diagrams, flowcharts, and 3D models to explain complex Physics and Chemistry concepts.
+- **Automated Quiz Engine**: AI-generated mock exams based on the specific textbook data stored in the Qdrant vector store.
+- **Collaborative Terminals**: Shared "Study Rooms" where multiple students can interact with the same tutor in real-time.
+
+---
+
 ## 🛡️ License
 Copyright © 2026 Sandesh Shrivastava. All rights reserved.
