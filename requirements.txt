@@ -1,29 +1,12 @@
-groq
-langchain>=0.3.0
-langchain-core
-langchain-groq
-langchain-community
-langchain-qdrant
-
-# Vector DB
-qdrant-client==1.12.1
-
-# Embeddings
-sentence-transformers
-numpy<2.0.0
-
-# PDF Parsing
-PyPDF2
-
-# Database
+fastapi
+uvicorn
 sqlalchemy
 pymysql
-cryptography
-
-# Frontend
-streamlit
-pandas
-matplotlib
-
-# Utils
+langchain
+langchain-groq
+langchain-community
+qdrant-client
+sentence-transformers
+pydantic
 python-dotenv
+cryptography
