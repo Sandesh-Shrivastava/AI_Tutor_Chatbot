@@ -24,7 +24,7 @@ from sqlalchemy.orm import DeclarativeBase, relationship, sessionmaker
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from config import MYSQL_URL
+from config import DATABASE_URL
 
 
 # ── Enums ──────────────────────────────────────────────────────────────────────
@@ -130,7 +130,7 @@ class TopicPerformance(Base):
 
 # ── Engine & Session factory ───────────────────────────────────────────────────
 
-engine = create_engine(MYSQL_URL, echo=False, pool_pre_ping=True)
+engine = create_engine(DATABASE_URL, echo=False, pool_pre_ping=True)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
 
 

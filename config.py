@@ -20,10 +20,15 @@ QDRANT_COLLECTION: str = os.getenv("QDRANT_COLLECTION", "ai_tutor_docs")
 # ── Embeddings ───────────────────────────────────────────────────────────────
 EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
 
-# ── MySQL ────────────────────────────────────────────────────────────────────
-MYSQL_URL: str = os.getenv(
-    "MYSQL_URL", "mysql+pymysql://root:password@localhost/ai_tutor"
-)
+# ── Database ─────────────────────────────────────────────────────────────────
+# Render provides DATABASE_URL. We support both MySQL and PostgreSQL.
+raw_db_url = os.getenv("DATABASE_URL") or os.getenv("MYSQL_URL") or "mysql+pymysql://root@localhost/ai_tutor"
+
+# SQLAlchemy 1.4+ requires 'postgresql://' instead of 'postgres://' (Render default)
+if raw_db_url and raw_db_url.startswith("postgres://"):
+    raw_db_url = raw_db_url.replace("postgres://", "postgresql://", 1)
+
+DATABASE_URL: str = raw_db_url
 
 # ── Document Ingestion ───────────────────────────────────────────────────────
 CHUNK_SIZE: int = 500
