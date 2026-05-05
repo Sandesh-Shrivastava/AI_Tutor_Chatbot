@@ -28,7 +28,11 @@ _embeddings: HuggingFaceEmbeddings | None = None
 def get_qdrant_client() -> QdrantClient:
     global _client
     if _client is None:
-        _client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY or None)
+        _client = QdrantClient(
+            url=QDRANT_URL,
+            api_key=QDRANT_API_KEY or None,
+            verify=False,
+        )
     return _client
 
 

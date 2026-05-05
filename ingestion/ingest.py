@@ -60,6 +60,7 @@ def get_qdrant_client() -> QdrantClient:
         _qdrant_client = QdrantClient(
             url=QDRANT_URL,
             api_key=QDRANT_API_KEY or None,
+            verify=False,
         )
     return _qdrant_client
 
@@ -75,8 +76,13 @@ def ensure_collection(client: QdrantClient, vector_size: int) -> None:
             vectors_config=VectorParams(size=vector_size, distance=Distance.COSINE),
         )
         print(f"[Qdrant] Created collection '{QDRANT_COLLECTION}'")
-    else:
-        print(f"[Qdrant] Collection '{QDRANT_COLLECTION}' already exists")
+    
+    # Ensure index exists for filtering by subject
+    client.create_payload_index(
+        collection_name=QDRANT_COLLECTION,
+        field_name="subject",
+        field_schema=PayloadSchemaType.KEYWORD,
+    )
 
 
 def upsert_chunks(chunks: list[DocumentChunk]) -> None:

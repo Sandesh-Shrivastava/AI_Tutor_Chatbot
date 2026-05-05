@@ -86,12 +86,23 @@ def ask(chain, question: str) -> tuple[str, list]:
     Returns:
         (answer_text, source_documents)
     """
-    result = chain.invoke({"question": question})
-    answer = result.get("answer", "").strip()
-    sources = result.get("source_documents", [])
+    try:
+        result = chain.invoke({"question": question})
+        answer = result.get("answer", "").strip()
+        sources = result.get("source_documents", [])
 
-    # Graceful fallback
-    if not answer or answer.lower() in {"", "i don't know", "i do not know"}:
-        return _NO_CONTEXT_MSG, []
+        # Graceful fallback
+        if not answer or answer.lower() in {"", "i don't know", "i do not know"}:
+            return _NO_CONTEXT_MSG, []
 
-    return answer, sources
+        return answer, sources
+    except Exception as e:
+        err_msg = str(e).lower()
+        if "connection refused" in err_msg or "connectionerror" in err_msg:
+            return (
+                "❌ **Database Connection Error**: I couldn't connect to the Qdrant vector database. "
+                "Please ensure your `QDRANT_URL` and `QDRANT_API_KEY` are correctly set in the `.env` file "
+                "and that the service is running.",
+                [],
+            )
+        return f"⚠️ **An error occurred**: {str(e)}", []

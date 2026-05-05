@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-outfit);
+}
+
+:root {
+  --background: #050505; /* Deep Carbon */
+  --foreground: #ffffff;
+  
+  --primary: #ff4d00; /* Vibrant Vermilion */
+  --primary-glow: rgba(255, 77, 0, 0.3);
+  
+  --secondary: #262626; /* Concrete */
+  --secondary-glow: rgba(255, 255, 255, 0.05);
+
+  --accent: #525252; /* Steel */
+  
+  --glass: rgba(10, 10, 10, 0.9);
+  --glass-border: rgba(255, 77, 0, 0.2);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Subtle industrial texture grid */
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 77, 0, 0.03) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* Brutalist Panel Utility */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(0px); /* Sharp, no blur for brutalist look */
+  border: 1px solid var(--glass-border);
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 1);
+}
+
+.glass-card {
+  background: #111111;
+  border: 1px solid #222222;
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-card:hover {
+  border-color: var(--primary);
+  background: #151515;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px var(--primary);
+}
+
+/* Typography */
+.text-gradient {
+  color: var(--primary);
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.tech-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 900;
+  color: #555555;
+}
+
+/* Custom Scrollbar (Square & Sharp) */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: var(--primary); }
+
+.glow-shadow {
+  box-shadow: 0px 0px 20px var(--primary-glow);
+}
+
+.glow-text {
+  text-shadow: 0px 0px 10px var(--primary-glow);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 77, 0, 0.05);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 100;
+}

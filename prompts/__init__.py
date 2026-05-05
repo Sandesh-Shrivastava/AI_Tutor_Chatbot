@@ -11,6 +11,7 @@ from prompts.beginner import BEGINNER_TEMPLATE
 from prompts.intermediate import INTERMEDIATE_TEMPLATE
 from prompts.advanced import ADVANCED_TEMPLATE
 from prompts.socratic import SOCRATIC_TEMPLATE
+from prompts.normal import NORMAL_TEMPLATE
 
 
 _LEVEL_TEMPLATES: dict[str, PromptTemplate] = {
@@ -23,20 +24,12 @@ _LEVEL_TEMPLATES: dict[str, PromptTemplate] = {
 def get_prompt_template(level: str = "beginner", mode: str = "normal") -> PromptTemplate:
     """
     Return the appropriate PromptTemplate based on student level and mode.
-
-    Args:
-        level: "beginner" | "intermediate" | "advanced"
-        mode:  "normal" | "socratic"
-
-    Returns:
-        A LangChain PromptTemplate instance.
     """
     if mode == "socratic":
         return SOCRATIC_TEMPLATE
+    
+    # User requested normal mode to be concise and direct without level-based fluff
+    if mode == "normal":
+        return NORMAL_TEMPLATE
 
-    template = _LEVEL_TEMPLATES.get(level)
-    if template is None:
-        raise ValueError(
-            f"Unknown level '{level}'. Choose from: {list(_LEVEL_TEMPLATES.keys())}"
-        )
-    return template
+    return _LEVEL_TEMPLATES.get(level, BEGINNER_TEMPLATE)

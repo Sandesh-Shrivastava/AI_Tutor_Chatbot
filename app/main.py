@@ -386,8 +386,8 @@ def render_chat():
         unsafe_allow_html=True,
     )
 
-    # Init session on first open
-    if st.session_state.chain is None:
+    # Init session on first open or if session_id is missing
+    if st.session_state.chain is None or st.session_state.session_id is None:
         _new_session()
 
     # Chat history
