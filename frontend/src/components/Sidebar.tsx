@@ -4,7 +4,15 @@ import { useStore } from "@/store/useStore";
 import { ChevronRight, LogOut, PlusSquare, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const SUBJECTS = ["Physics", "Chemistry", "Biology", "Mathematics", "Python_Programming"];
+const SUBJECTS = [
+  "Physics", 
+  "Chemistry", 
+  "Biology", 
+  "Mathematics", 
+  "Computer_Science", 
+  "Artificial_Intelligence", 
+  "Social_Science"
+];
 
 export function Sidebar() {
   const { user, subject, mode, setSubject, setMode, setUser, clearSession } = useStore();

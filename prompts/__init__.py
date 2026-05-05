@@ -21,15 +21,16 @@ _LEVEL_TEMPLATES: dict[str, PromptTemplate] = {
 }
 
 
-def get_prompt_template(level: str = "beginner", mode: str = "normal") -> PromptTemplate:
+def get_prompt_template(level: str = "beginner", mode: str = "normal", subject: str = "General") -> PromptTemplate:
     """
     Return the appropriate PromptTemplate based on student level and mode.
     """
     if mode == "socratic":
-        return SOCRATIC_TEMPLATE
+        template = SOCRATIC_TEMPLATE
+    elif mode == "normal":
+        template = NORMAL_TEMPLATE
+    else:
+        template = _LEVEL_TEMPLATES.get(level, BEGINNER_TEMPLATE)
     
-    # User requested normal mode to be concise and direct without level-based fluff
-    if mode == "normal":
-        return NORMAL_TEMPLATE
-
-    return _LEVEL_TEMPLATES.get(level, BEGINNER_TEMPLATE)
+    # Inject the specific subject so the AI can enforce subject isolation
+    return template.partial(subject=subject.replace("_", " "))

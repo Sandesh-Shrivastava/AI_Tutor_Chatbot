@@ -65,7 +65,7 @@ def build_chain(
 
     retriever = build_retriever(subject=subject, k=4)
     mem = memory or build_memory()
-    prompt = get_prompt_template(level=level, mode=mode)
+    prompt = get_prompt_template(level=level, mode=mode, subject=subject)
 
     chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
