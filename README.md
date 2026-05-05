@@ -38,6 +38,7 @@ The portal features a premium, high-performance UI designed for professional foc
 5.  **Computer Science**
 6.  **Artificial Intelligence (AI)**
 7.  **Social Science** (History, Geography, Political Science, Economics)
+8.  **General Knowledge**
 
 ---
 

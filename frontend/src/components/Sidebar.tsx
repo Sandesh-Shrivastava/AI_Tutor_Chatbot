@@ -11,7 +11,8 @@ const SUBJECTS = [
   "Mathematics", 
   "Computer_Science", 
   "Artificial_Intelligence", 
-  "Social_Science"
+  "Social_Science",
+  "General_Knowledge"
 ];
 
 export function Sidebar() {
