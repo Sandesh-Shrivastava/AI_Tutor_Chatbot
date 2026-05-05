@@ -10,7 +10,6 @@ const SUBJECTS = [
   "Biology", 
   "Mathematics", 
   "Computer_Science", 
-  "Artificial_Intelligence", 
   "Social_Science",
   "General_Knowledge"
 ];
