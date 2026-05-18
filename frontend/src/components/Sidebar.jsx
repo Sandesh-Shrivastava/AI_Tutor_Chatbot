@@ -1,8 +1,7 @@
-"use client";
-
 import { useStore } from "@/store/useStore";
-import { ChevronRight, LogOut, PlusSquare, Terminal } from "lucide-react";
+import { LogOut, PlusSquare, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 const SUBJECTS = [
   "Physics", 
@@ -16,11 +15,12 @@ const SUBJECTS = [
 
 export function Sidebar() {
   const { user, subject, mode, setSubject, setMode, setUser, clearSession } = useStore();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setUser(null);
     clearSession();
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (

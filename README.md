@@ -1,6 +1,6 @@
 # 🎓 AI Tutor Chatbot — Industrial Grade RAG Portal
 
-An ultra-modern, production-ready AI tutoring platform built with **React (Next.js)** and **FastAPI**. This system uses Retrieval-Augmented Generation (RAG) to provide strictly isolated, subject-specific learning support powered by **LLaMA 3.3 (70B)**.
+An ultra-modern, production-ready AI tutoring platform built with **React (Vite + JavaScript)** and **FastAPI**. This system uses Retrieval-Augmented Generation (RAG) to provide strictly isolated, subject-specific learning support powered by **LLaMA 3.3**.
 
 ---
 
@@ -33,29 +33,34 @@ The portal features a premium, high-performance UI designed for professional foc
 ---
 
 ## 🏗️ Tech Stack
-- **Frontend**: Next.js 14, Tailwind CSS, Framer Motion, Zustand.
-- **Backend**: FastAPI (Python), LangChain.
-- **Database**: Dual-Support (MySQL & PostgreSQL) for flexible cloud deployment.
+- **Frontend**: React.js (Vite), Tailwind CSS v4, Framer Motion, Zustand, React Router v6.
+- **Backend**: FastAPI (Python), LangChain, LangChain-Groq.
+- **Database**: Dual-Support (MySQL & PostgreSQL) for flexible cloud logging and telemetry.
 - **Vector Store**: Qdrant Cloud (Semantic Search).
-- **Embeddings**: HuggingFace `all-MiniLM-L6-v2`.
+- **Embeddings**: HuggingFace `all-MiniLM-L6-v2` / Sentence Transformers.
 
 ---
 
 ## 🛠️ Installation & Setup
 
 ### 1. Environment Configuration
-Create a `.env` file:
+Create a `.env` file in the root directory for the backend:
 ```bash
 GROQ_API_KEY=your_key
 QDRANT_URL=your_qdrant_url
 QDRANT_API_KEY=your_qdrant_key
-DATABASE_URL=postgres://user:pass@host:port/db  # Or MYSQL_URL
+DATABASE_URL=postgres://user:pass@host:port/db  # Or MySQL URL
+```
+
+Create a `.env` file in the `frontend/` directory:
+```bash
+VITE_API_URL=http://localhost:8000
 ```
 
 ### 2. Backend Setup
 ```bash
 pip install -r requirements.txt
-python3 api/main.py
+uvicorn api.main:app --reload --port 8000
 ```
 
 ### 3. Frontend Setup
@@ -64,32 +69,16 @@ cd frontend
 npm install
 npm run dev
 ```
+The frontend will be available at `http://localhost:5173`.
 
 ---
 
 ## 📁 Repository Structure
-- `api/`: FastAPI Backend Server.
-- `frontend/`: Next.js React Application.
+- `api/` & `app/`: FastAPI Backend Server & Application Logic.
+- `frontend/`: React (Vite) Single Page Application.
 - `prompts/`: Logic for Subject Isolation & Mode Control.
 - `rag/`: Vector search and chain orchestration.
 - `database/`: Schema and session logging logic.
-
----
-
-## 🔮 Future Enhancements
-The AI Tutor is an evolving platform. Upcoming features include:
-
-### 🚀 1. Production Deployment
-- **Cloud Infrastructure**: Migration to a fully containerized architecture (Docker/Kubernetes).
-- **Edge Deployment**: Deploying the frontend to Vercel Edge for sub-100ms global response times.
-- **Horizontal Scaling**: Implementing a load balancer to handle thousands of concurrent students.
-
-### 🧠 2. Intelligent Features
-- **Adaptive Learning Analytics**: A personalized dashboard that tracks student "Mastery Levels" per topic using Bayesian Knowledge Tracing.
-- **Multimodal Tutoring**: Voice-to-Voice interaction and AI-generated video explanations.
-- **Visual Synthesis**: Real-time generation of diagrams, flowcharts, and 3D models to explain complex Physics and Chemistry concepts.
-- **Automated Quiz Engine**: AI-generated mock exams based on the specific textbook data stored in the Qdrant vector store.
-- **Collaborative Terminals**: Shared "Study Rooms" where multiple students can interact with the same tutor in real-time.
 
 ---
 

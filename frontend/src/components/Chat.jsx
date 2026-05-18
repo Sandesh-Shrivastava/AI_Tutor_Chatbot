@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Cpu, User, Activity } from "lucide-react";
@@ -11,7 +9,7 @@ export function Chat() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const { user, sessionId, subject, mode, messages, setSessionId, addMessage } = useStore();
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef(null);
 
   // Auto-scroll
   useEffect(() => {
@@ -25,7 +23,7 @@ export function Chat() {
     if (!sessionId && user) {
       const initSession = async () => {
         try {
-          const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+          const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
           const res = await fetch(`${baseUrl}/sessions/start`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -44,9 +42,9 @@ export function Chat() {
       };
       initSession();
     }
-  }, [sessionId, user, subject, mode]);
+  }, [sessionId, user, subject, mode, setSessionId]);
 
-  const handleSend = async (e: React.FormEvent) => {
+  const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim() || !sessionId || !user) return;
 
@@ -56,7 +54,7 @@ export function Chat() {
     setIsTyping(true);
 
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
       const res = await fetch(`${baseUrl}/chat/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -147,7 +145,7 @@ export function Chat() {
                 
                 {msg.sources && msg.sources.length > 0 && (
                   <div className="flex flex-wrap gap-3">
-                    {msg.sources.map((src: string, j: number) => (
+                    {msg.sources.map((src, j) => (
                       <span key={j} className="px-3 py-1 bg-[#111111] border border-[#222222] text-[9px] text-[#444444] font-black uppercase tracking-widest">
                         {src}
                       </span>

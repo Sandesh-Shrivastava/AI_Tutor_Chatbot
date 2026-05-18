@@ -1,7 +1,5 @@
-"use client";
-
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useStore } from "@/store/useStore";
 import { cn } from "@/lib/utils";
@@ -13,16 +11,16 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [level, setLevel] = useState("beginner");
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
+  const navigate = useNavigate();
   const { setUser } = useStore();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (!username.trim()) return;
 
     setIsLoading(true);
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:8000";
       const res = await fetch(`${baseUrl}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -32,7 +30,7 @@ export default function LoginPage() {
       if (res.ok) {
         const user = await res.json();
         setUser(user);
-        router.push("/");
+        navigate("/");
       }
     } catch (error) {
       console.error("Login failed", error);
